@@ -78,6 +78,6 @@ class LoggerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->app->bind('logger', 'MargaTampu\LaravelTeamsLogging\LoggerServiceProvider');
+        // $this->app->bind('logger', 'Ooga04\LaravelTeamsLogging\LoggerServiceProvider');
     }
 }
