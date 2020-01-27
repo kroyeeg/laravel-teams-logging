@@ -81,10 +81,7 @@ Or you can include additional info to card message using log context.
 
 ```php
 Log::channel('teams')->error('Error message', [
-    [
-        'name'  => 'Assigned to',
-        'value' => 'Unassigned',
-    ]
+    'Assigned to' => 'Unassigned',
 ]);
 ```
 
