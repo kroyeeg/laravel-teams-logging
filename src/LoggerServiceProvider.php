@@ -1,6 +1,6 @@
 <?php
 
-namespace MargaTampu\LaravelTeamsLogging;
+namespace Ooga04\LaravelTeamsLogging;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;

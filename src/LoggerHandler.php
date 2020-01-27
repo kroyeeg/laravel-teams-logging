@@ -1,6 +1,6 @@
 <?php
 
-namespace MargaTampu\LaravelTeamsLogging;
+namespace Ooga04\LaravelTeamsLogging;
 
 use Monolog\Logger;
 use Monolog\Handler\AbstractProcessingHandler;
@@ -39,14 +39,7 @@ class LoggerHandler extends AbstractProcessingHandler
     protected function getMessage(array $record)
     {
         if ($this->style == 'card') {
-            // Include context as facts to send to microsoft teams
-            // Added Sent Date Info
-            $facts = array_merge($record['context'], [[
-                'name'  => 'Sent Date',
-                'value' => date('D, M d Y H:i:s e'),
-            ]]);
-
-            return $this->useCardStyling($record['level_name'], $record['message'], $facts);
+            return $this->useCardStyling($record['level_name'], $record['message'], $this->facts($record));
         } else {
             return $this->useSimpleStyling($record['level_name'], $record['message']);
         }
@@ -118,5 +111,31 @@ class LoggerHandler extends AbstractProcessingHandler
         ]);
 
         curl_exec($ch);
+    }
+
+    /**
+     * create facts node.
+     * @param array $record
+     * @return array
+     */
+    private function facts(array $record): array
+    {
+        $facts = [];
+        $facts[] = [
+            'name'  => 'Sent Date',
+            'value' => date('D, M d Y H:i:s e'),
+        ];
+
+        $func = function(array $targets) use (&$facts) {
+            foreach ($targets as $key => $value) {
+                $facts[] = [
+                    'name' => $key,
+                    'value' => $value,
+                ];
+            }
+        };
+        $func($record['extra'] ?? []);
+        $func($record['context'] ?? []);
+        return $facts;
     }
 }

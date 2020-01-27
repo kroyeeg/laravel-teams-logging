@@ -1,6 +1,6 @@
 <?php
 
-namespace MargaTampu\LaravelTeamsLogging;
+namespace Ooga04\LaravelTeamsLogging;
 
 class LoggerMessage implements \ArrayAccess, \JsonSerializable
 {
