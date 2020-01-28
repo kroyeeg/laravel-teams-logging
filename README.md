@@ -82,6 +82,11 @@ Or you can include additional info to card message using log context.
 ```php
 Log::channel('teams')->error('Error message', [
     'Assigned to' => 'Unassigned',
+    'stack trace' => $e->getTraceAsString(), // could not set getTrace(), because may be upper limit fact value's section
+    'nested array' => [ // output json_encode string
+        'key1' => 'value1',
+        'key2' => 'value2',
+    ],
 ]);
 ```
 
