@@ -19,8 +19,9 @@ class LoggerMessage implements \ArrayAccess, \JsonSerializable
      * Whether a offset exists
      * @link http://php.net/manual/en/arrayaccess.offsetexists.php
      * @param mixed $offset
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->data[$offset]);
     }
@@ -29,6 +30,7 @@ class LoggerMessage implements \ArrayAccess, \JsonSerializable
      * Offset to retrieve
      * @link http://php.net/manual/en/arrayaccess.offsetget.php
      * @param mixed $offset
+     * @return mixed|null
      */
     public function offsetGet($offset)
     {
@@ -39,10 +41,11 @@ class LoggerMessage implements \ArrayAccess, \JsonSerializable
      * Offset to set
      * @link http://php.net/manual/en/arrayaccess.offsetset.php
      * @param mixed $offset
+     * @param $value
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
-        if (is_null($offset)) {
+        if ($offset === null) {
             $this->data[] = $value;
         } else {
             $this->data[$offset] = $value;
@@ -54,7 +57,7 @@ class LoggerMessage implements \ArrayAccess, \JsonSerializable
      * @link http://php.net/manual/en/arrayaccess.offsetunset.php
      * @param mixed $offset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->data[$offset]);
     }
@@ -62,7 +65,7 @@ class LoggerMessage implements \ArrayAccess, \JsonSerializable
     /**
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return array_merge([
             '@context' => 'http://schema.org/extensions',

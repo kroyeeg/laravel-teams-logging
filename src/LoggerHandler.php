@@ -18,11 +18,12 @@ class LoggerHandler extends AbstractProcessingHandler
 
     /**
      * @param $url
-     * @param int $level
+     * @param string $style
      * @param string $name
+     * @param int $level
      * @param bool $bubble
      */
-    public function __construct($url, $level = Logger::DEBUG, $style, $name, $bubble = true)
+    public function __construct($url, $style, $name, $level = Logger::DEBUG, $bubble = true)
     {
         parent::__construct($level, $bubble);
 
@@ -36,13 +37,13 @@ class LoggerHandler extends AbstractProcessingHandler
      *
      * @return LoggerMessage
      */
-    protected function getMessage(array $record)
+    protected function getMessage(array $record): LoggerMessage
     {
-        if ($this->style == 'card') {
+        if ($this->style === 'card') {
             return $this->useCardStyling($record['level_name'], $record['message'], $this->facts($record));
-        } else {
-            return $this->useSimpleStyling($record['level_name'], $record['message']);
         }
+
+        return $this->useSimpleStyling($record['level_name'], $record['message']);
     }
 
     /**
@@ -50,9 +51,10 @@ class LoggerHandler extends AbstractProcessingHandler
      *
      * @param String $name
      * @param String $message
-     * @param array  $facts
+     * @param array $facts
+     * @return LoggerMessage
      */
-    public function useCardStyling($name, $message, $facts)
+    public function useCardStyling($name, $message, $facts): LoggerMessage
     {
         $loggerColour = new LoggerColour($name);
 
@@ -81,8 +83,9 @@ class LoggerHandler extends AbstractProcessingHandler
      *
      * @param String $name
      * @param String $message
+     * @return LoggerMessage
      */
-    public function useSimpleStyling($name, $message)
+    public function useSimpleStyling($name, $message): LoggerMessage
     {
         $loggerColour = new LoggerColour($name);
 
@@ -126,11 +129,11 @@ class LoggerHandler extends AbstractProcessingHandler
             'value' => date('D, M d Y H:i:s e'),
         ];
 
-        $func = function(array $targets) use (&$facts) {
+        $func = static function(array $targets) use (&$facts) {
             foreach ($targets as $key => $value) {
                 $facts[] = [
                     'name' => $key,
-                    'value' => $value,
+                    'value' => is_array($value) ? json_encode($value) : $value,
                 ];
             }
         };

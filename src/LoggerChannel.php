@@ -9,10 +9,10 @@ class LoggerChannel
     /**
      * @param array $config
      *
-     * @return TeamsLogger
+     * @return Logger
      */
     public function __invoke(array $config)
     {
-        return new Logger($config['url'], $config['level'] ?? MonologLogger::DEBUG, $config['style'] ?? 'simple', $config['name'] ?? null);
+        return new Logger($config['url'], $config['style'] ?? 'simple', $config['name'] ?? null, $config['level'] ?? MonologLogger::DEBUG);
     }
 }
