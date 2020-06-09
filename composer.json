@@ -1,5 +1,5 @@
 {
-	"name": "sh-ogawa/laravel-teams-logging",
+	"name": "kroyeeg/laravel-teams-logging",
 	"description": "Laravel handler to sending messages to Microsoft Teams using the Incoming Webhook connector",
 	"license": "MIT",
 	"authors": [
@@ -15,16 +15,15 @@
 		"ext-curl": "*"
 	},
 	"require-dev": {
-		"ext-curl": "*"
 	},
 	"autoload": {
 		"psr-4": {
-			"Ooga04\\LaravelTeamsLogging\\": "src/"
+			"Kroyeeg\\LaravelTeamsLogging\\": "src/"
 		}
 	},
 	"extra": {
 		"laravel": {
-			"providers": [ "Ooga04\\LaravelTeamsLogging\\LoggerServiceProvider" ]
+			"providers": [ "Kroyeeg\\LaravelTeamsLogging\\LoggerServiceProvider" ]
 		}
 	}
 }

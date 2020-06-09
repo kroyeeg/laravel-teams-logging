@@ -1,17 +1,17 @@
 <?php
 
-namespace Ooga04\LaravelTeamsLogging;
+namespace Kroyeeg\LaravelTeamsLogging;
 
 class LoggerColour
 {
-    const EMERGENCY = '721C24';
-    const ALERT     = 'AF2432';
-    const CRITICAL  = 'FF0000';
-    const ERROR     = 'FF8000';
-    const WARNING   = 'FFEEBA';
-    const NOTICE    = 'B8DAFF';
-    const INFO      = 'BEE5EB';
-    const DEBUG     = 'C3E6CB';
+    public const EMERGENCY = '721C24';
+    public const ALERT     = 'AF2432';
+    public const CRITICAL  = 'FF0000';
+    public const ERROR     = 'FF8000';
+    public const WARNING   = 'FFEEBA';
+    public const NOTICE    = 'B8DAFF';
+    public const INFO      = 'BEE5EB';
+    public const DEBUG     = 'C3E6CB';
 
     /** @var string */
     private $const;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ooga04\LaravelTeamsLogging;
+namespace Kroyeeg\LaravelTeamsLogging;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
