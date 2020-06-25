@@ -103,6 +103,22 @@ You can also add `teams` to the default `stack` channel so all errors are automa
 ],
 ```
 
+If you don't want to use avatars, set avatars in config/teams.php like this:
+```php
+'avatars' => [
+    'emergency' => '',
+    'alert'     => '',
+    'critical'  => '',
+    'error'     => '',
+    'warning'   => '',
+    'notice'    => '',
+    'info'      => '',
+    'debug'     => '',
+],
+```
+
+
+
 ## Results
 
 Here are some results of notifications sent to microsoft teams channel using card style.
