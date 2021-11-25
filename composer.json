@@ -9,7 +9,7 @@
 		}
 	],
 	"require": {
-		"php": "^7.1",
+		"php": "^7.1|^8.0",
 		"monolog/monolog": "^1.23|^2.0",
 		"ext-json": "*",
 		"ext-curl": "*"
