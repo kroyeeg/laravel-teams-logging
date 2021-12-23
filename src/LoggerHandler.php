@@ -2,6 +2,7 @@
 
 namespace Kroyeeg\LaravelTeamsLogging;
 
+use DateTime;
 use Monolog\Logger;
 use Monolog\Handler\AbstractProcessingHandler;
 
@@ -126,7 +127,7 @@ class LoggerHandler extends AbstractProcessingHandler
         $facts = [];
         $facts[] = [
             'name'  => 'Sent Date',
-            'value' => date('D, M d Y H:i:s e'),
+            'value' => (new DateTime)->format('Y-m-d H:i:s.u'),
         ];
 
         $func = static function(array $targets) use (&$facts) {
